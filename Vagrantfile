@@ -397,6 +397,19 @@ Vagrant.configure("2") do |config|
     v.cpus = vvv_config['vm_config']['cores']
   end
 
+  # Configuration options for AWS
+  config.vm.provider :aws do |aws, override|
+    aws.access_key_id = "AKIASZD4B2A6TNSKWQFB"
+    aws.secret_access_key = "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"
+    # aws.session_token = "SESSION TOKEN"
+    # aws.keypair_name = "KEYPAIR NAME"
+
+    aws.ami = "temp-user"
+
+    override.ssh.username = "ubuntu"
+    override.ssh.private_key_path = "~/.ssh/nyanyehtun-simon-github"
+  end
+
   # Configuration options for the VMware Desktop provider.
   config.vm.provider :vmware_desktop do |v|
     v.vmx["memsize"] = vvv_config['vm_config']['memory']
